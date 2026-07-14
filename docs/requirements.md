@@ -28,7 +28,7 @@
 
 ## プロジェクト側に入れておくとよい npm パッケージ
 
-formatter、linter、プロジェクト側 language server を使って Astro / TypeScript / Prettier / ESLint / Tailwind CSS / SCSS / PHP を扱う場合は、プロジェクト側に以下が入っていることを確認します。
+formatter、linter、プロジェクト側 language server を使って Astro / TypeScript / Prettier / ESLint / Tailwind CSS / SCSS / PHP を扱う場合は、対象プロジェクト側に以下が入っていることを確認します。
 
 ```sh
 npm ls typescript prettier eslint tailwindcss @tailwindcss/language-server @astrojs/language-server intelephense
@@ -60,4 +60,5 @@ rustup component add rust-analyzer rust-src
 - Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です
 - PHP は coc extension ではなく、プロジェクト側の `intelephense` を `npx --no-install` 経由で使います
 - Astro は coc extension ではなく、プロジェクト側の `@astrojs/language-server` を `npx --no-install` 経由で使います
+- Tailwind / PHP / Astro の LSP 設定は global な `~/.vim/coc-settings.json` ではなく、対象プロジェクトの `.vim/coc-settings.json` に置きます。テンプレートは `examples/` 配下にあります
 - Rust は coc extension ではなく、`rustup` component の `rust-analyzer` を直接使います

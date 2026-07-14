@@ -127,6 +127,7 @@ alias vvim='vim -Nu NONE -i NONE -n'
 | CLI ツールの入れ方・消し方を確認する | [CLI ツール管理](docs/cli-tools.md) |
 | plugin 導入候補を確認する | [Plugin 導入判断メモ](docs/plugin-evaluation.md) |
 | coc.nvim 構成の管理方針を確認する | [coc.nvim 構成メモ](docs/coc-setup.md) |
+| project-local LSP のテンプレートを使う | [examples](examples/) |
 | Markdown preview を使う | [Markdown プレビュー CLI](docs/markdown-preview.md) |
 | 困ったときに確認する | [トラブルシュート](docs/troubleshooting.md) |
 
@@ -138,6 +139,7 @@ alias vvim='vim -Nu NONE -i NONE -n'
 vimrc
 vimrc.minimal
 coc-settings.json
+examples/
 .gitignore
 README.md
 docs/

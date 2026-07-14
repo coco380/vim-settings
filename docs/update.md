@@ -66,7 +66,7 @@ vim
 
 ## プロジェクト側 language server を更新する場合
 
-Tailwind、PHP、Astro はプロジェクト側の npm devDependency として管理します。更新は対象プロジェクト側で行います。
+Tailwind、PHP、Astro はプロジェクト側の npm devDependency と `.vim/coc-settings.json` として管理します。更新は対象プロジェクト側で行います。
 
 ```sh
 npm update @tailwindcss/language-server @astrojs/language-server intelephense
