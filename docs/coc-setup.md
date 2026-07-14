@@ -96,15 +96,20 @@ git clone --depth 1 https://github.com/tpope/vim-commentary.git "$HOME/.vim/pack
 
 ## LSP / extension 方針
 
-Tailwind、PHP、Astro、Rust は direct LSP で扱います。TypeScript、ESLint、Prettier、JSON、CSS、HTML、YAML は coc extension で扱います。
+Rust は共通設定の direct LSP で扱います。Tailwind、PHP、Astro は、使わないプロジェクトで language server 起動エラーが出ないように、対象プロジェクト側の local Coc 設定でだけ有効化します。TypeScript、ESLint、Prettier、JSON、CSS、HTML、YAML は coc extension で扱います。
 
-direct LSP:
+共通設定の direct LSP:
+
+```txt
+rust-analyzer
+```
+
+対象プロジェクトだけに置く direct LSP:
 
 ```txt
 @tailwindcss/language-server
 intelephense
 @astrojs/language-server
-rust-analyzer
 ```
 
 coc extensions:
@@ -119,11 +124,11 @@ coc-css
 coc-html
 ```
 
-Tailwind CSS は v4 前提です。`@yaegassy/coc-tailwindcss3` は使わず、プロジェクト側に入れた `@tailwindcss/language-server` を `coc-settings.json` の `languageserver.tailwindCSS` から呼び出します。Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です。
+Tailwind CSS は v4 前提です。`@yaegassy/coc-tailwindcss3` は使いません。共通 `coc-settings.json` には `languageserver.tailwindCSS` を置かず、Tailwind を使う対象プロジェクトだけ `.vim/coc-settings.json` に local 設定を置きます。Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です。
 
-PHP / WordPress は `coc-phpls` ではなく、プロジェクト側に入れた `intelephense` を `coc-settings.json` の `languageserver.intelephense` から呼び出します。WordPress API の認識は未設定です。WordPress 専用の stubs や project-specific 設定は、対象プロジェクト側で必要になった時点で追加します。
+PHP / WordPress は `coc-phpls` ではなく、プロジェクト側に入れた `intelephense` を project-local 設定の `languageserver.intelephense` から呼び出します。WordPress API の認識は未設定です。WordPress 専用の stubs や project-specific 設定は、対象プロジェクト側で必要になった時点で追加します。
 
-Astro は `@yaegassy/coc-astro` ではなく、プロジェクト側に入れた `@astrojs/language-server` を `coc-settings.json` の `languageserver.astro` から呼び出します。
+Astro は `@yaegassy/coc-astro` ではなく、プロジェクト側に入れた `@astrojs/language-server` を project-local 設定の `languageserver.astro` から呼び出します。
 
 Rust は `coc-rust-analyzer` ではなく、`rustup` component の `rust-analyzer` を直接呼び出します。
 
@@ -141,6 +146,92 @@ Rust は `coc-rust-analyzer` ではなく、`rustup` component の `rust-analyze
 ```
 
 MoonBit は採用候補に含めません。
+
+## Project-local LSP 設定
+
+Tailwind CSS、PHP、Astro を使うプロジェクトでは、対象プロジェクト内で Vim を起動して `:CocLocalConfig` を実行し、作成された `.vim/coc-settings.json` に必要な LSP だけを追加します。共通設定には置かないため、使わないプロジェクトで `npx --no-install ...` の起動失敗が出るのを避けられます。
+
+複数の project-local LSP を使う場合は、以下の例を別々のファイルとして置かず、同じ `.vim/coc-settings.json` の `languageserver` オブジェクト内に必要な entry をまとめます。
+
+Tailwind CSS の例:
+
+```json
+{
+  "languageserver": {
+    "tailwindCSS": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "tailwindcss-language-server",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss"
+      ],
+      "rootPatterns": [
+        "package.json"
+      ]
+    }
+  }
+}
+```
+
+`rootPatterns` の `package.json` は Tailwind の有無判定ではなく、Coc の workspace root 検出に使います。local package を `npx --no-install` で解決しやすくするため、対象プロジェクト内で Vim を起動します。Tailwind v4 では `tailwind.config.*` がない構成もあるため、共通設定の自動判定には使いません。
+
+PHP / WordPress の例:
+
+```json
+{
+  "languageserver": {
+    "intelephense": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "intelephense",
+        "--stdio"
+      ],
+      "filetypes": [
+        "php"
+      ],
+      "rootPatterns": [
+        "package.json",
+        "composer.json",
+        ".git"
+      ]
+    }
+  }
+}
+```
+
+Astro の例:
+
+```json
+{
+  "languageserver": {
+    "astro": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "astro-ls",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro"
+      ],
+      "rootPatterns": [
+        "package.json"
+      ]
+    }
+  }
+}
+```
 
 ## 導入前チェック
 

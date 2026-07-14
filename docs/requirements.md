@@ -56,8 +56,8 @@ rustup component add rust-analyzer rust-src
 
 - React Router v8 / v7 の `app/routes.ts`、`react-router.config.ts`、各 route module は通常の `.ts` / `.tsx` として扱えます
 - Remix v3 beta は React Router / Remix v2 系とは別系統の prerelease です。この設定では専用補完は保証せず、TypeScript / JavaScript / CSS / Prettier / ESLint の基本編集支援として扱います
-- Tailwind CSS は v4 前提です。補完は coc extension ではなく、プロジェクト側の `@tailwindcss/language-server` を `npx --no-install` 経由で使います
+- Tailwind CSS は v4 前提です。補完は coc extension ではなく、Tailwind プロジェクト側の local Coc 設定から `@tailwindcss/language-server` を `npx --no-install` 経由で使います
 - Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です
-- PHP は coc extension ではなく、プロジェクト側の `intelephense` を `npx --no-install` 経由で使います
-- Astro は coc extension ではなく、プロジェクト側の `@astrojs/language-server` を `npx --no-install` 経由で使います
+- PHP は coc extension ではなく、PHP / WordPress プロジェクト側の local Coc 設定から `intelephense` を `npx --no-install` 経由で使います
+- Astro は coc extension ではなく、Astro プロジェクト側の local Coc 設定から `@astrojs/language-server` を `npx --no-install` 経由で使います
 - Rust は coc extension ではなく、`rustup` component の `rust-analyzer` を直接使います

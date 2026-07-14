@@ -82,7 +82,7 @@ git -C "$HOME/.vim/pack/vendor/start/tokyonight-vim" pull --ff-only
 
 ## プロジェクト側 language server を更新する場合
 
-Tailwind、PHP、Astro はプロジェクト側の npm devDependency として管理します。更新は対象プロジェクト側で行います。
+Tailwind、PHP、Astro はプロジェクト側の npm devDependency として管理します。これらの LSP は使うプロジェクトの local Coc 設定でだけ有効化します。更新は対象プロジェクト側で行います。
 
 ```sh
 npm update @tailwindcss/language-server @astrojs/language-server intelephense
