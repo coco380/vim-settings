@@ -43,6 +43,7 @@ coc.nvim 構成を入れていた場合だけ削除対象になるもの:
 
 ```txt
 ~/.vim/pack/vendor/start/coc.nvim/
+~/.vim/pack/vendor/start/iceberg.vim/
 ~/.vim/pack/vendor/start/vim-gitgutter/
 ~/.vim/pack/vendor/start/vim-commentary/
 ~/.vim/coc-settings.json

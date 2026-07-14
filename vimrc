@@ -88,22 +88,33 @@ set nobackup
 set nowritebackup
 
 " ------------------------------------------------------------
-" VSCode-like dark defaults without plugins
+" Theme
 " ------------------------------------------------------------
-highlight Normal guifg=#d4d4d4 guibg=#1e1e1e ctermfg=252 ctermbg=234
-highlight NormalNC guifg=#c5c5c5 guibg=#1e1e1e ctermfg=250 ctermbg=234
-highlight CursorLine guibg=#2a2d2e ctermbg=236
-highlight LineNr guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
-highlight CursorLineNr guifg=#c6c6c6 guibg=#2a2d2e ctermfg=251 ctermbg=236
-highlight SignColumn guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
-highlight VertSplit guifg=#3c3c3c guibg=#1e1e1e ctermfg=238 ctermbg=234
-highlight StatusLine guifg=#ffffff guibg=#007acc ctermfg=231 ctermbg=32
-highlight StatusLineNC guifg=#cccccc guibg=#3c3c3c ctermfg=252 ctermbg=238
-highlight Visual guibg=#264f78 ctermbg=24
-highlight Search guifg=#000000 guibg=#cca700 ctermfg=16 ctermbg=178
-highlight IncSearch guifg=#000000 guibg=#f48771 ctermfg=16 ctermbg=209
-highlight Pmenu guifg=#d4d4d4 guibg=#252526 ctermfg=252 ctermbg=235
-highlight PmenuSel guifg=#ffffff guibg=#094771 ctermfg=231 ctermbg=24
+function! s:ApplyFallbackHighlights() abort
+  highlight Normal guifg=#d4d4d4 guibg=#1e1e1e ctermfg=252 ctermbg=234
+  highlight NormalNC guifg=#c5c5c5 guibg=#1e1e1e ctermfg=250 ctermbg=234
+  highlight CursorLine guibg=#2a2d2e ctermbg=236
+  highlight LineNr guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
+  highlight CursorLineNr guifg=#c6c6c6 guibg=#2a2d2e ctermfg=251 ctermbg=236
+  highlight SignColumn guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
+  highlight VertSplit guifg=#3c3c3c guibg=#1e1e1e ctermfg=238 ctermbg=234
+  highlight StatusLine guifg=#ffffff guibg=#007acc ctermfg=231 ctermbg=32
+  highlight StatusLineNC guifg=#cccccc guibg=#3c3c3c ctermfg=252 ctermbg=238
+  highlight Visual guibg=#264f78 ctermbg=24
+  highlight Search guifg=#000000 guibg=#cca700 ctermfg=16 ctermbg=178
+  highlight IncSearch guifg=#000000 guibg=#f48771 ctermfg=16 ctermbg=209
+  highlight Pmenu guifg=#d4d4d4 guibg=#252526 ctermfg=252 ctermbg=235
+  highlight PmenuSel guifg=#ffffff guibg=#094771 ctermfg=231 ctermbg=24
+endfunction
+
+try
+  colorscheme iceberg
+  if get(g:, 'colors_name', '') !=# 'iceberg'
+    call s:ApplyFallbackHighlights()
+  endif
+catch /^Vim\%((\a\+)\)\=:E185/
+  call s:ApplyFallbackHighlights()
+endtry
 
 set statusline=%#StatusLine#
 set statusline+=\ %f

@@ -38,6 +38,7 @@ Vim 標準 package 機能を使う場合:
 
 ```txt
 ~/.vim/pack/vendor/start/coc.nvim
+~/.vim/pack/vendor/start/iceberg.vim
 ~/.vim/pack/vendor/start/vim-gitgutter
 ~/.vim/pack/vendor/start/vim-commentary
 ```
@@ -77,6 +78,7 @@ mkdir -p "$HOME/.vim/pack/vendor/start"
 
 ```sh
 git clone --depth 1 --branch release https://github.com/neoclide/coc.nvim.git "$HOME/.vim/pack/vendor/start/coc.nvim"
+git clone --depth 1 https://github.com/cocopon/iceberg.vim.git "$HOME/.vim/pack/vendor/start/iceberg.vim"
 git clone --depth 1 https://github.com/airblade/vim-gitgutter.git "$HOME/.vim/pack/vendor/start/vim-gitgutter"
 git clone --depth 1 https://github.com/tpope/vim-commentary.git "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
