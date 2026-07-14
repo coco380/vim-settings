@@ -7,11 +7,12 @@
 ```txt
 1. uninstall.md
 2. cli-tools.md       rg / fzf / glow を入れている場合だけ
-3. coc-setup.md       coc.nvim 構成を入れている場合だけ
-4. troubleshooting.md 困った場合
+3. install.md         Tokyo Night theme plugin を入れている場合だけ
+4. coc-setup.md       coc.nvim 構成を入れている場合だけ
+5. troubleshooting.md 困った場合
 ```
 
-まずこのファイルで `~/.vimrc`、`~/.vimrc.minimal`、Vim state、alias の削除方針を確認します。任意ツールや coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
+まずこのファイルで `~/.vimrc`、`~/.vimrc.minimal`、Vim state、alias の削除方針を確認します。任意ツール、Tokyo Night theme plugin、coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
 
 ## 削除対象
 
@@ -39,9 +40,10 @@ alias vvim='vim -Nu NONE -i NONE -n'
 ~/.local/bin/glow
 ```
 
-coc.nvim 構成を入れていた場合だけ削除対象になるもの:
+任意 plugin 構成を入れていた場合だけ削除対象になるもの:
 
 ```txt
+~/.vim/pack/vendor/start/tokyonight-vim/
 ~/.vim/pack/vendor/start/coc.nvim/
 ~/.vim/pack/vendor/start/vim-gitgutter/
 ~/.vim/pack/vendor/start/vim-commentary/
@@ -57,7 +59,7 @@ coc.nvim 構成を入れていた場合だけ削除対象になるもの:
 ```sh
 ls "$HOME/.vimrc" "$HOME/.vimrc.minimal" "$HOME/.vim/coc-settings.json"
 ls "$HOME/.local/bin/rg" "$HOME/.local/bin/fzf" "$HOME/.local/bin/glow"
-ls "$HOME/.vim/pack/vendor/start/coc.nvim" "$HOME/.vim/pack/vendor/start/vim-gitgutter" "$HOME/.vim/pack/vendor/start/vim-commentary"
+ls "$HOME/.vim/pack/vendor/start/tokyonight-vim" "$HOME/.vim/pack/vendor/start/coc.nvim" "$HOME/.vim/pack/vendor/start/vim-gitgutter" "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
 
 `ls` が `No such file or directory` を出す対象は、既に存在しないため削除不要です。
@@ -136,5 +138,11 @@ alias vvim='vim -Nu NONE -i NONE -n'
 他の開発環境と共有しているツールは、この Vim 設定のためだけに削除しないでください。
 
 `rg`、`fzf`、`glow` を単体 binary で入れた場合の削除方法は [CLI ツール管理](cli-tools.md) を確認してください。
+
+Tokyo Night theme plugin を入れた場合は、該当 package ディレクトリだけを削除します。
+
+```sh
+rm -rf "$HOME/.vim/pack/vendor/start/tokyonight-vim"
+```
 
 `coc.nvim` 中心の構成を入れた場合の削除方法は [coc.nvim 構成メモ](coc-setup.md) を確認してください。

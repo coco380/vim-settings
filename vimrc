@@ -57,8 +57,6 @@ if has('termguicolors')
   set termguicolors
 endif
 
-set background=dark
-
 if has('clipboard')
   set clipboard=unnamed
 endif
@@ -88,22 +86,72 @@ set nobackup
 set nowritebackup
 
 " ------------------------------------------------------------
-" VSCode-like dark defaults without plugins
+" Tokyo Night theme
 " ------------------------------------------------------------
-highlight Normal guifg=#d4d4d4 guibg=#1e1e1e ctermfg=252 ctermbg=234
-highlight NormalNC guifg=#c5c5c5 guibg=#1e1e1e ctermfg=250 ctermbg=234
-highlight CursorLine guibg=#2a2d2e ctermbg=236
-highlight LineNr guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
-highlight CursorLineNr guifg=#c6c6c6 guibg=#2a2d2e ctermfg=251 ctermbg=236
-highlight SignColumn guifg=#858585 guibg=#1e1e1e ctermfg=245 ctermbg=234
-highlight VertSplit guifg=#3c3c3c guibg=#1e1e1e ctermfg=238 ctermbg=234
-highlight StatusLine guifg=#ffffff guibg=#007acc ctermfg=231 ctermbg=32
-highlight StatusLineNC guifg=#cccccc guibg=#3c3c3c ctermfg=252 ctermbg=238
-highlight Visual guibg=#264f78 ctermbg=24
-highlight Search guifg=#000000 guibg=#cca700 ctermfg=16 ctermbg=178
-highlight IncSearch guifg=#000000 guibg=#f48771 ctermfg=16 ctermbg=209
-highlight Pmenu guifg=#d4d4d4 guibg=#252526 ctermfg=252 ctermbg=235
-highlight PmenuSel guifg=#ffffff guibg=#094771 ctermfg=231 ctermbg=24
+set background=dark
+
+let g:tokyonight_style = get(g:, 'tokyonight_style', 'night')
+let g:tokyonight_enable_italic = get(g:, 'tokyonight_enable_italic', 1)
+let g:tokyonight_disable_italic_comment = get(g:, 'tokyonight_disable_italic_comment', 0)
+
+function! s:ApplyTokyoNightFallback() abort
+  highlight clear
+  if exists('syntax_on')
+    syntax reset
+  endif
+  set background=dark
+  let g:colors_name = 'tokyonight-fallback'
+
+  highlight Normal gui=NONE cterm=NONE term=NONE guifg=#c0caf5 guibg=#1a1b26 ctermfg=189 ctermbg=234
+  highlight NormalNC gui=NONE cterm=NONE term=NONE guifg=#a9b1d6 guibg=#1a1b26 ctermfg=146 ctermbg=234
+  highlight CursorLine gui=NONE cterm=NONE term=NONE guibg=#292e42 ctermbg=236
+  highlight LineNr gui=NONE cterm=NONE term=NONE guifg=#3b4261 guibg=#1a1b26 ctermfg=60 ctermbg=234
+  highlight CursorLineNr gui=NONE cterm=NONE term=NONE guifg=#bb9af7 guibg=#292e42 ctermfg=141 ctermbg=236
+  highlight SignColumn gui=NONE cterm=NONE term=NONE guifg=#3b4261 guibg=#1a1b26 ctermfg=60 ctermbg=234
+  highlight VertSplit gui=NONE cterm=NONE term=NONE guifg=#3b4261 guibg=#1a1b26 ctermfg=60 ctermbg=234
+  highlight StatusLine gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#7aa2f7 ctermfg=234 ctermbg=111
+  highlight StatusLineNC gui=NONE cterm=NONE term=NONE guifg=#a9b1d6 guibg=#24283b ctermfg=146 ctermbg=237
+  highlight Visual gui=NONE cterm=NONE term=NONE guibg=#364a82 ctermbg=24
+  highlight Search gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#e0af68 ctermfg=234 ctermbg=179
+  highlight IncSearch gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#ff9e64 ctermfg=234 ctermbg=215
+  highlight Pmenu gui=NONE cterm=NONE term=NONE guifg=#c0caf5 guibg=#24283b ctermfg=189 ctermbg=237
+  highlight PmenuSel gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#7aa2f7 ctermfg=234 ctermbg=111
+  highlight Comment gui=NONE cterm=NONE term=NONE guifg=#565f89 ctermfg=60
+  highlight Constant gui=NONE cterm=NONE term=NONE guifg=#ff9e64 ctermfg=215
+  highlight Identifier gui=NONE cterm=NONE term=NONE guifg=#7dcfff ctermfg=117
+  highlight Statement gui=NONE cterm=NONE term=NONE guifg=#bb9af7 ctermfg=141
+  highlight PreProc gui=NONE cterm=NONE term=NONE guifg=#7aa2f7 ctermfg=111
+  highlight Type gui=NONE cterm=NONE term=NONE guifg=#2ac3de ctermfg=80
+  highlight Special gui=NONE cterm=NONE term=NONE guifg=#f7768e ctermfg=204
+  highlight Directory gui=NONE cterm=NONE term=NONE guifg=#7aa2f7 ctermfg=111
+  highlight MatchParen gui=NONE cterm=NONE term=NONE guifg=#ff9e64 guibg=#3b4261 ctermfg=215 ctermbg=60
+  highlight ErrorMsg gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#f7768e ctermfg=234 ctermbg=204
+  highlight WarningMsg gui=NONE cterm=NONE term=NONE guifg=#e0af68 ctermfg=179
+  highlight Folded gui=NONE cterm=NONE term=NONE guifg=#7aa2f7 guibg=#24283b ctermfg=111 ctermbg=237
+  highlight DiffAdd gui=NONE cterm=NONE term=NONE guifg=#9ece6a guibg=#20303b ctermfg=114 ctermbg=236
+  highlight DiffChange gui=NONE cterm=NONE term=NONE guifg=#e0af68 guibg=#2f334d ctermfg=179 ctermbg=237
+  highlight DiffDelete gui=NONE cterm=NONE term=NONE guifg=#f7768e guibg=#37222c ctermfg=204 ctermbg=235
+  highlight DiffText gui=NONE cterm=NONE term=NONE guifg=#7aa2f7 guibg=#394b70 ctermfg=111 ctermbg=60
+  highlight Error gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#f7768e ctermfg=234 ctermbg=204
+  highlight Todo gui=NONE cterm=NONE term=NONE guifg=#1a1b26 guibg=#e0af68 ctermfg=234 ctermbg=179
+endfunction
+
+function! s:UseTokyoNightTheme() abort
+  let l:loaded = 0
+
+  try
+    colorscheme tokyonight
+    let l:loaded = 1
+  catch
+    let l:loaded = 0
+  endtry
+
+  if !l:loaded
+    call s:ApplyTokyoNightFallback()
+  endif
+endfunction
+
+call s:UseTokyoNightTheme()
 
 set statusline=%#StatusLine#
 set statusline+=\ %f

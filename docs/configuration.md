@@ -12,7 +12,7 @@
 - `rg` があれば `rg --vimgrep` を使います
 - `rg` がなく、現在ファイルまたは cwd が Git worktree 内であれば `git grep` を使います
 - statusline は plugin なしで自前設定します
-- colorscheme plugin は使わず、VSCode 風の dark highlight を自前定義します
+- Tokyo Night colorscheme plugin があれば読み込み、なければ Tokyo Night 風の dark highlight を自前定義します
 - terminal は Vim の `:terminal` を使います
 - Markdown preview は `glow` がある場合だけ `:terminal` で表示します
 - undo / swap / viminfo は repo 内の `.vim/state/` 配下へ保存します

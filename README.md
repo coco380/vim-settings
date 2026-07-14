@@ -23,7 +23,7 @@ vim -Nu NONE -i NONE -n
 
 ## この設定でできること
 
-- VSCode 風の暗色テーマ
+- Tokyo Night の暗色テーマ
 - `<Space>` leader の基本キーマップ
 - Vim 標準の `netrw` によるファイル explorer
 - Vim 標準の buffer / window / terminal 操作
@@ -39,6 +39,7 @@ vim -Nu NONE -i NONE -n
 - Homebrew は使いません
 - Vim 9.1 で確認しています
 - 現時点では必須ダウンロードはありません
+- Tokyo Night colorscheme plugin がある場合は自動で使い、ない場合は内蔵 fallback を使います
 
 詳しくは [前提要件](docs/requirements.md) を確認してください。
 

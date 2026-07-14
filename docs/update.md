@@ -7,11 +7,12 @@
 ```txt
 1. update.md
 2. cli-tools.md       rg / fzf / glow を入れている場合だけ
-3. coc-setup.md       coc.nvim 構成を入れている場合だけ
-4. troubleshooting.md 困った場合
+3. install.md         Tokyo Night theme plugin を入れている場合だけ
+4. coc-setup.md       coc.nvim 構成を入れている場合だけ
+5. troubleshooting.md 困った場合
 ```
 
-まずこのファイルで `vimrc`、`vimrc.minimal`、`coc-settings.json` の反映方法を確認します。任意ツールや coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
+まずこのファイルで `vimrc`、`vimrc.minimal`、`coc-settings.json` の反映方法を確認します。任意ツール、Tokyo Night theme plugin、coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
 
 ## repo 内設定を更新する
 
@@ -70,6 +71,12 @@ vim
 | `glow` | `glow --version` |
 
 `rg`、`fzf`、`glow` を単体 binary で管理している場合の更新方法は [CLI ツール管理](cli-tools.md) を確認してください。
+
+Tokyo Night theme plugin を Vim 標準 package 機能で入れている場合は、配置先の Git repository を更新します。
+
+```sh
+git -C "$HOME/.vim/pack/vendor/start/tokyonight-vim" pull --ff-only
+```
 
 `coc.nvim` 中心の構成を入れた場合の更新方法は [coc.nvim 構成メモ](coc-setup.md) を確認してください。
 
