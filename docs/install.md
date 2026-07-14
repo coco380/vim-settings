@@ -2,6 +2,82 @@
 
 macOS の Vim で、このリポジトリの `vimrc` を試す手順です。
 
+## 読む順番
+
+最小構成だけ入れる場合:
+
+```txt
+1. requirements.md
+2. install.md
+3. keybindings.md
+4. troubleshooting.md
+```
+
+任意 CLI や LSP / 補完まで含めて入れる場合:
+
+```txt
+1. requirements.md
+2. install.md
+3. cli-tools.md
+4. coc-setup.md
+5. keybindings.md
+6. troubleshooting.md
+```
+
+`cli-tools.md` は `rg`、`fzf`、`glow` を入れる場合だけ確認します。`coc-setup.md` は LSP / 補完 / diagnostics を入れる場合だけ確認します。
+
+## 影響範囲
+
+最小構成で作成または上書きする可能性があるもの:
+
+```txt
+~/.vimrc
+~/.vimrc.minimal
+```
+
+最小構成を Vim で起動した後に作られる可能性があるもの:
+
+```txt
+~/.vim/state/
+~/.vim/state-minimal/
+```
+
+alias を永続化する場合だけ変更するもの:
+
+```txt
+~/.zshrc
+```
+
+任意 CLI を入れる場合だけ作成または上書きするもの:
+
+```txt
+~/.local/bin/rg
+~/.local/bin/fzf
+~/.local/bin/glow
+```
+
+LSP / 補完 / diagnostics 用の coc.nvim 構成を入れる場合だけ作成するもの:
+
+```txt
+~/.vim/pack/vendor/start/coc.nvim/
+~/.vim/pack/vendor/start/vim-gitgutter/
+~/.vim/pack/vendor/start/vim-commentary/
+~/.vim/coc-settings.json
+~/.config/coc/
+~/.cache/coc/
+```
+
+## 実行前チェック
+
+既存ファイルの有無を先に確認します。
+
+```sh
+ls -la "$HOME/.vimrc" "$HOME/.vimrc.minimal" "$HOME/.vim" "$HOME/.zshrc"
+ls -la "$HOME/.config/coc" "$HOME/.cache/coc" "$HOME/.local/bin"
+```
+
+`ls` が `No such file or directory` を出す場合、その対象はまだ存在しません。既存の `~/.vimrc`、`~/.vimrc.minimal`、`~/.vim/coc-settings.json` がある場合は、上書き前にバックアップします。
+
 ## 現在の進め方
 
 まずは Mac 本体の Vim 設定を変更せず、リポジトリ内だけで検証します。

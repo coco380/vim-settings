@@ -2,6 +2,56 @@
 
 この Vim 設定を外す手順です。
 
+## 読む順番
+
+```txt
+1. uninstall.md
+2. cli-tools.md       rg / fzf / glow を入れている場合だけ
+3. coc-setup.md       coc.nvim 構成を入れている場合だけ
+4. troubleshooting.md 困った場合
+```
+
+まずこのファイルで `~/.vimrc`、`~/.vimrc.minimal`、Vim state、alias の削除方針を確認します。任意ツールや coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
+
+## 削除対象
+
+最小構成を Mac 本体へ反映していた場合の削除対象:
+
+```txt
+~/.vimrc
+~/.vimrc.minimal
+~/.vim/state/
+~/.vim/state-minimal/
+```
+
+alias を追加していた場合だけ、`~/.zshrc` から削除する行:
+
+```sh
+alias lvim='vim --noplugin -Nu "$HOME/.vimrc.minimal"'
+alias vvim='vim -Nu NONE -i NONE -n'
+```
+
+任意 CLI を単体 binary として入れていた場合だけ削除するもの:
+
+```txt
+~/.local/bin/rg
+~/.local/bin/fzf
+~/.local/bin/glow
+```
+
+coc.nvim 構成を入れていた場合だけ削除対象になるもの:
+
+```txt
+~/.vim/pack/vendor/start/coc.nvim/
+~/.vim/pack/vendor/start/vim-gitgutter/
+~/.vim/pack/vendor/start/vim-commentary/
+~/.vim/coc-settings.json
+~/.config/coc/
+~/.cache/coc/
+```
+
+`~/.vim/`、`~/.local/bin/`、Node.js、npm、`~/.npm` は他の用途でも使われる可能性があるため、この設定の削除だけを理由に丸ごと消しません。
+
 ## repo 内検証だけの場合
 
 `vim -Nu ./vimrc` や `vim --noplugin -Nu ./vimrc.minimal` で試しているだけなら、Mac 本体の Vim 設定は変更されていません。

@@ -70,6 +70,52 @@ alias vvim='vim -Nu NONE -i NONE -n'
 
 ## ドキュメント
 
+### 手順別に読む順番
+
+#### 新規 install
+
+最小構成だけ入れる場合:
+
+```txt
+1. docs/requirements.md
+2. docs/install.md
+3. docs/keybindings.md
+4. docs/troubleshooting.md
+```
+
+任意 CLI や LSP / 補完まで含めて入れる場合:
+
+```txt
+1. docs/requirements.md
+2. docs/install.md
+3. docs/cli-tools.md
+4. docs/coc-setup.md
+5. docs/keybindings.md
+6. docs/troubleshooting.md
+```
+
+作成・変更されるファイルは [install 手順](docs/install.md) の「影響範囲」で確認します。
+
+#### update
+
+```txt
+1. docs/update.md
+2. docs/cli-tools.md    必要な場合だけ
+3. docs/coc-setup.md    coc.nvim 構成を入れている場合だけ
+4. docs/troubleshooting.md
+```
+
+#### uninstall
+
+```txt
+1. docs/uninstall.md
+2. docs/cli-tools.md    任意 CLI を入れている場合だけ
+3. docs/coc-setup.md    coc.nvim 構成を入れている場合だけ
+4. docs/troubleshooting.md
+```
+
+削除対象は [uninstall 手順](docs/uninstall.md) の「削除対象」で確認します。
+
 | 目的 | ドキュメント |
 |---|---|
 | 必要なツールを確認する | [前提要件](docs/requirements.md) |

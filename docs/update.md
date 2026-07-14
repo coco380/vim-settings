@@ -2,6 +2,17 @@
 
 この Vim 設定を更新するときの手順です。
 
+## 読む順番
+
+```txt
+1. update.md
+2. cli-tools.md       rg / fzf / glow を入れている場合だけ
+3. coc-setup.md       coc.nvim 構成を入れている場合だけ
+4. troubleshooting.md 困った場合
+```
+
+まずこのファイルで `vimrc`、`vimrc.minimal`、`coc-settings.json` の反映方法を確認します。任意ツールや coc.nvim 構成を入れている場合だけ、該当ドキュメントも確認します。
+
 ## repo 内設定を更新する
 
 このリポジトリの `vimrc` や `vimrc.minimal` を編集した後、Mac 本体の設定を読まずに確認します。
