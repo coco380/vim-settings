@@ -487,6 +487,134 @@ function! s:GitStatus() abort
   endif
 
   call s:OpenScratch('[Git Status]', l:lines, 'git')
+  let b:git_status_root = l:root
+  call s:SetupGitStatusKeymaps()
+endfunction
+
+" Extract the file path from the current [Git Status] line.
+" Handles the short porcelain format (XY<space>path) and renames
+" (orig -> new) and git's double-quoted paths.
+function! s:GitStatusFileOnLine() abort
+  let l:line = getline('.')
+  " Only accept real short-status rows: two status columns then a space.
+  " Rejects the '## branch' header, blank lines and 'No output.'.
+  if l:line !~# '^[ MTADRCU?!]\{2\} .'
+    return ''
+  endif
+  let l:path = strpart(l:line, 3)
+  let l:arrow = matchend(l:path, ' -> ')
+  if l:arrow >= 0
+    let l:path = strpart(l:path, l:arrow)
+  endif
+  if l:path =~# '^".*"$'
+    let l:path = substitute(l:path, '^"\(.*\)"$', '\1', '')
+    let l:path = substitute(l:path, '\\"', '"', 'g')
+  endif
+  return l:path
+endfunction
+
+function! s:GitStatusRefresh() abort
+  let l:root = get(b:, 'git_status_root', '')
+  if empty(l:root)
+    return
+  endif
+  let l:save = getpos('.')
+  let l:lines = s:SystemList(['git', '-C', l:root, 'status', '--short', '--branch'])
+  setlocal modifiable noreadonly
+  silent %delete _
+  call setline(1, empty(l:lines) ? ['No output.'] : l:lines)
+  setlocal nomodifiable readonly nomodified
+  let l:save[1] = min([l:save[1], line('$')])
+  call setpos('.', l:save)
+endfunction
+
+function! s:GitStatusRun(args, label) abort
+  let l:root = get(b:, 'git_status_root', '')
+  let l:file = s:GitStatusFileOnLine()
+  if empty(l:root) || empty(l:file)
+    return
+  endif
+  call s:System(['git', '-C', l:root] + a:args + ['--', l:file])
+  if v:shell_error
+    echohl WarningMsg
+    echom a:label . ' failed: ' . l:file
+    echohl None
+    return
+  endif
+  call s:GitStatusRefresh()
+endfunction
+
+" Open the file on the current line. a:split opens it in a split instead of
+" reusing the previous window.
+function! s:GitStatusOpen(split) abort
+  let l:root = get(b:, 'git_status_root', '')
+  let l:file = s:GitStatusFileOnLine()
+  if empty(l:root) || empty(l:file)
+    return
+  endif
+  let l:target = fnameescape(l:root . '/' . l:file)
+  if a:split
+    execute 'aboveleft split ' . l:target
+  else
+    if winnr('$') > 1
+      wincmd p
+    endif
+    execute 'edit ' . l:target
+  endif
+endfunction
+
+" Show the unstaged diff for the file on the current line.
+function! s:GitStatusDiff() abort
+  let l:root = get(b:, 'git_status_root', '')
+  let l:file = s:GitStatusFileOnLine()
+  if empty(l:root) || empty(l:file)
+    return
+  endif
+  let l:lines = s:SystemList(['git', '-C', l:root, 'diff', '--no-ext-diff', '--no-color', '--', l:file])
+  if v:shell_error
+    echohl WarningMsg
+    echom 'git diff failed.'
+    echohl None
+    return
+  endif
+  if empty(l:lines)
+    let l:lines = ['No unstaged git diff for ' . l:file]
+  endif
+  call s:OpenScratch('[Git Diff] ' . fnamemodify(l:file, ':t'), l:lines, 'diff')
+endfunction
+
+function! s:GitStatusAdd() abort
+  call s:GitStatusRun(['add'], 'git add')
+endfunction
+
+function! s:GitStatusUnstage() abort
+  call s:GitStatusRun(['restore', '--staged'], 'git restore --staged')
+endfunction
+
+function! s:GitStatusDiscard() abort
+  let l:file = s:GitStatusFileOnLine()
+  if empty(l:file)
+    return
+  endif
+  call inputsave()
+  let l:ans = input('Discard working-tree changes in ' . l:file . '? (staged changes are kept) (y/N) ')
+  call inputrestore()
+  if l:ans !~? '^y'
+    echo 'Cancelled.'
+    return
+  endif
+  call s:GitStatusRun(['restore'], 'git restore')
+endfunction
+
+function! s:SetupGitStatusKeymaps() abort
+  nnoremap <silent> <buffer> a :call <SID>GitStatusAdd()<CR>
+  nnoremap <silent> <buffer> r :call <SID>GitStatusUnstage()<CR>
+  nnoremap <silent> <buffer> R :call <SID>GitStatusDiscard()<CR>
+  nnoremap <silent> <buffer> d :call <SID>GitStatusDiff()<CR>
+  nnoremap <silent> <buffer> <CR> :call <SID>GitStatusOpen(0)<CR>
+  nnoremap <silent> <buffer> o :call <SID>GitStatusOpen(1)<CR>
+  nnoremap <silent> <buffer> gr :call <SID>GitStatusRefresh()<CR>
+  nnoremap <silent> <buffer> q :close<CR>
 endfunction
 
 function! s:GitBlame() abort
