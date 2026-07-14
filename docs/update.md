@@ -33,6 +33,15 @@ vim --noplugin -Nu ./vimrc.minimal -i NONE -n -es +'qa!'
 
 `~/.vimrc`、`~/.vimrc.minimal`、`~/.vim/coc-settings.json` に反映済みなら、リポジトリ側の設定をコピーします。
 
+既存の設定を残したい場合は、コピー前に backup を作ります。
+
+```sh
+backup_ts="$(date +%Y%m%d-%H%M%S)"
+test -f "$HOME/.vimrc" && cp "$HOME/.vimrc" "$HOME/.vimrc.backup.$backup_ts"
+test -f "$HOME/.vimrc.minimal" && cp "$HOME/.vimrc.minimal" "$HOME/.vimrc.minimal.backup.$backup_ts"
+test -f "$HOME/.vim/coc-settings.json" && cp "$HOME/.vim/coc-settings.json" "$HOME/.vim/coc-settings.json.backup.$backup_ts"
+```
+
 ```sh
 mkdir -p "$HOME/.vim"
 cp vimrc "$HOME/.vimrc"
@@ -66,7 +75,7 @@ vim
 
 ## プロジェクト側 language server を更新する場合
 
-Tailwind、PHP、Astro はプロジェクト側の npm devDependency と `.vim/coc-settings.json` として管理します。更新は対象プロジェクト側で行います。
+Tailwind、PHP、Astro はプロジェクト側の npm devDependency として管理します。更新は対象プロジェクト側で行います。
 
 ```sh
 npm update @tailwindcss/language-server @astrojs/language-server intelephense

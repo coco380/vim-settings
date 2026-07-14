@@ -43,7 +43,6 @@ coc.nvim 構成を入れていた場合だけ削除対象になるもの:
 
 ```txt
 ~/.vim/pack/vendor/start/coc.nvim/
-~/.vim/pack/vendor/start/iceberg.vim/
 ~/.vim/pack/vendor/start/vim-gitgutter/
 ~/.vim/pack/vendor/start/vim-commentary/
 ~/.vim/coc-settings.json
@@ -52,6 +51,16 @@ coc.nvim 構成を入れていた場合だけ削除対象になるもの:
 ```
 
 `~/.vim/`、`~/.local/bin/`、Node.js、npm、`~/.npm` は他の用途でも使われる可能性があるため、この設定の削除だけを理由に丸ごと消しません。
+
+削除前に、対象が存在するかを確認します。
+
+```sh
+ls "$HOME/.vimrc" "$HOME/.vimrc.minimal" "$HOME/.vim/coc-settings.json"
+ls "$HOME/.local/bin/rg" "$HOME/.local/bin/fzf" "$HOME/.local/bin/glow"
+ls "$HOME/.vim/pack/vendor/start/coc.nvim" "$HOME/.vim/pack/vendor/start/vim-gitgutter" "$HOME/.vim/pack/vendor/start/vim-commentary"
+```
+
+`ls` が `No such file or directory` を出す対象は、既に存在しないため削除不要です。
 
 ## repo 内検証だけの場合
 

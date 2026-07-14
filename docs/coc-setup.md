@@ -38,7 +38,6 @@ Vim 標準 package 機能を使う場合:
 
 ```txt
 ~/.vim/pack/vendor/start/coc.nvim
-~/.vim/pack/vendor/start/iceberg.vim
 ~/.vim/pack/vendor/start/vim-gitgutter
 ~/.vim/pack/vendor/start/vim-commentary
 ```
@@ -78,7 +77,6 @@ mkdir -p "$HOME/.vim/pack/vendor/start"
 
 ```sh
 git clone --depth 1 --branch release https://github.com/neoclide/coc.nvim.git "$HOME/.vim/pack/vendor/start/coc.nvim"
-git clone --depth 1 https://github.com/cocopon/iceberg.vim.git "$HOME/.vim/pack/vendor/start/iceberg.vim"
 git clone --depth 1 https://github.com/airblade/vim-gitgutter.git "$HOME/.vim/pack/vendor/start/vim-gitgutter"
 git clone --depth 1 https://github.com/tpope/vim-commentary.git "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
@@ -98,20 +96,15 @@ git clone --depth 1 https://github.com/tpope/vim-commentary.git "$HOME/.vim/pack
 
 ## LSP / extension 方針
 
-Rust は global な direct LSP として扱います。Tailwind、PHP、Astro はプロジェクト依存が強いため、global な `~/.vim/coc-settings.json` には入れず、必要なプロジェクトだけ `.vim/coc-settings.json` で有効化します。TypeScript、ESLint、Prettier、JSON、CSS、HTML、YAML は coc extension で扱います。
+Tailwind、PHP、Astro、Rust は direct LSP で扱います。TypeScript、ESLint、Prettier、JSON、CSS、HTML、YAML は coc extension で扱います。
 
-global direct LSP:
-
-```txt
-rust-analyzer
-```
-
-project-local direct LSP:
+direct LSP:
 
 ```txt
 @tailwindcss/language-server
 intelephense
 @astrojs/language-server
+rust-analyzer
 ```
 
 coc extensions:
@@ -126,22 +119,13 @@ coc-css
 coc-html
 ```
 
-Tailwind CSS は v4 前提です。`@yaegassy/coc-tailwindcss3` は使わず、プロジェクト側に入れた `@tailwindcss/language-server` を対象プロジェクトの `.vim/coc-settings.json` から呼び出します。Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です。
+Tailwind CSS は v4 前提です。`@yaegassy/coc-tailwindcss3` は使わず、プロジェクト側に入れた `@tailwindcss/language-server` を `coc-settings.json` の `languageserver.tailwindCSS` から呼び出します。Tailwind CSS language server がプロジェクトを検出できるように、対象プロジェクトには `@import "tailwindcss";` などを含む CSS entrypoint が必要です。
 
-PHP / WordPress は `coc-phpls` ではなく、プロジェクト側に入れた `intelephense` を対象プロジェクトの `.vim/coc-settings.json` から呼び出します。WordPress API の認識は未設定です。WordPress 専用の stubs や project-specific 設定は、対象プロジェクト側で必要になった時点で追加します。
+PHP / WordPress は `coc-phpls` ではなく、プロジェクト側に入れた `intelephense` を `coc-settings.json` の `languageserver.intelephense` から呼び出します。WordPress API の認識は未設定です。WordPress 専用の stubs や project-specific 設定は、対象プロジェクト側で必要になった時点で追加します。
 
-Astro は `@yaegassy/coc-astro` ではなく、プロジェクト側に入れた `@astrojs/language-server` を対象プロジェクトの `.vim/coc-settings.json` から呼び出します。
+Astro は `@yaegassy/coc-astro` ではなく、プロジェクト側に入れた `@astrojs/language-server` を `coc-settings.json` の `languageserver.astro` から呼び出します。
 
 Rust は `coc-rust-analyzer` ではなく、`rustup` component の `rust-analyzer` を直接呼び出します。
-
-project-local LSP を有効にする場合は、対象プロジェクトで `:CocLocalConfig` を実行して `.vim/coc-settings.json` を作り、必要なテンプレートをコピーまたは merge します。
-
-```sh
-mkdir -p .vim
-cp /path/to/vim-settings/examples/coc-settings-tailwind.json .vim/coc-settings.json
-```
-
-複数の project-local LSP を使う場合は、`examples/` 配下の該当テンプレートを 1つの `.vim/coc-settings.json` に merge します。Tailwind 無関係のプロジェクトでは Tailwind 設定を置かないことで、`tailwindCSS client: couldn't create connection to server` のような起動失敗を避けます。
 
 保存時整形:
 
@@ -185,7 +169,7 @@ backup_ts="$(date +%Y%m%d-%H%M%S)"
 test -f "$HOME/.vimrc" && cp "$HOME/.vimrc" "$HOME/.vimrc.backup.$backup_ts"
 ```
 
-このリポジトリの `coc-settings.json` は、導入時に `~/.vim/coc-settings.json` として配置します。この global 設定には Tailwind / PHP / Astro の project-local LSP は含めません。
+このリポジトリの `coc-settings.json` は、導入時に `~/.vim/coc-settings.json` として配置します。
 
 ```sh
 mkdir -p "$HOME/.vim"

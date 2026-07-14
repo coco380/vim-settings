@@ -90,6 +90,46 @@
   "scss.lint.unknownAtRules": "ignore",
   "less.lint.unknownAtRules": "ignore",
   "languageserver": {
+    "tailwindCSS": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "tailwindcss-language-server",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss"
+      ]
+    },
+    "intelephense": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "intelephense",
+        "--stdio"
+      ],
+      "filetypes": [
+        "php"
+      ]
+    },
+    "astro": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "astro-ls",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro"
+      ]
+    },
     "rust-analyzer": {
       "command": "rust-analyzer",
       "filetypes": [
@@ -105,5 +145,22 @@
   "yaml.enable": true,
   "yaml.validate": true,
   "yaml.format.enable": true,
+  "tailwindCSS.includeLanguages": {
+    "astro": "html",
+    "typescriptreact": "javascript",
+    "javascriptreact": "javascript",
+    "scss": "css"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list"
+  ],
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx",
+    "cn"
+  ],
   "json.enable": true
 }
