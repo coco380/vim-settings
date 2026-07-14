@@ -1,0 +1,84 @@
+" Minimal Vim configuration for small screens and SSH sessions.
+
+set nocompatible
+set noloadplugins
+set encoding=utf-8
+set fileencoding=utf-8
+set number
+set nowrap
+set hidden
+set updatetime=500
+set timeoutlen=800
+set wildmenu
+set wildmode=longest:full,full
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set splitbelow
+set splitright
+set scrolloff=3
+set sidescrolloff=3
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smartindent
+set autoindent
+set backspace=indent,eol,start
+set laststatus=1
+set showtabline=0
+set showmode
+set shortmess+=c
+set signcolumn=auto
+set nobackup
+set nowritebackup
+
+if has('syntax')
+  syntax enable
+endif
+
+filetype plugin indent on
+
+if has('clipboard')
+  set clipboard=unnamed
+endif
+
+" Keep Vim-generated state in the same pattern as the full vimrc.
+let s:repo_root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let s:state_dir = s:repo_root . '/.vim/state-minimal'
+let s:undodir = s:state_dir . '/undo'
+let s:backupdir = s:state_dir . '/backup'
+let s:swapdir = s:state_dir . '/swap'
+
+for s:dir in [s:undodir, s:backupdir, s:swapdir]
+  if !isdirectory(s:dir)
+    call mkdir(s:dir, 'p')
+  endif
+endfor
+
+if exists('&viminfofile')
+  let &viminfofile = s:state_dir . '/viminfo'
+endif
+
+let &undodir = s:undodir
+let &backupdir = s:backupdir . '//'
+let &directory = s:swapdir . '//'
+set undofile
+
+let mapleader = "\<Space>"
+
+nnoremap <silent> <leader>w :write<CR>
+nnoremap <silent> <leader>q :quit<CR>
+nnoremap <silent> <leader>Q :qall<CR>
+nnoremap <silent> <leader>h :nohlsearch<CR>
+nnoremap <leader>e :edit<Space>
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> <leader>bd :bdelete<CR>
+
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq

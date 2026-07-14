@@ -1,0 +1,166 @@
+{
+  "extensions.updateCheck": "daily",
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "▲",
+  "diagnostic.infoSign": "●",
+  "diagnostic.hintSign": "◆",
+  "diagnostic.virtualText": true,
+  "suggest.noselect": true,
+  "suggest.enableFloat": true,
+  "suggest.maxCompleteItemCount": 30,
+  "suggest.timeout": 5000,
+  "signature.enable": true,
+  "hover.target": "float",
+  "[javascript]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[typescript]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[astro]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[css]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[scss]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[less]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[html]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[json]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[jsonc]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[yaml]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[markdown]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[rust]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "tsserver.enable": true,
+  "tsserver.useLocalTsdk": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "rust-analyzer.checkOnSave": true,
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": true,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "eslint.packageManager": "npm",
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.format.enable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "astro"
+  ],
+  "css.validate": true,
+  "scss.validate": true,
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+  "languageserver": {
+    "tailwindCSS": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "tailwindcss-language-server",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss"
+      ]
+    },
+    "intelephense": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "intelephense",
+        "--stdio"
+      ],
+      "filetypes": [
+        "php"
+      ]
+    },
+    "astro": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "astro-ls",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro"
+      ]
+    },
+    "rust-analyzer": {
+      "command": "rust-analyzer",
+      "filetypes": [
+        "rust"
+      ],
+      "rootPatterns": [
+        "Cargo.toml"
+      ]
+    }
+  },
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "yaml.enable": true,
+  "yaml.validate": true,
+  "yaml.format.enable": true,
+  "tailwindCSS.includeLanguages": {
+    "astro": "html",
+    "typescriptreact": "javascript",
+    "javascriptreact": "javascript",
+    "scss": "css"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list"
+  ],
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx",
+    "cn"
+  ],
+  "json.enable": true
+}
