@@ -19,6 +19,8 @@ syntax enable
 
 set encoding=utf-8
 set fileencoding=utf-8
+" Avoid pathological backtracking in Vim's TypeScript/TSX syntax rules.
+set regexpengine=2
 set number
 set relativenumber
 set hidden
