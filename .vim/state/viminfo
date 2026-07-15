@@ -10,11 +10,19 @@
 
 # hlsearch on (H) or off (h):
 ~h
+# Last Search Pattern:
+~MSle0~/alpha
+
+# Last Substitute String:
+$
+
 # Command Line History (newest to oldest):
 :grep runtime
 |2,0,1783997039,,"grep runtime"
 
 # Search String History (newest to oldest):
+? alpha
+|2,1,1784088518,,"alpha"
 
 # Expression History (newest to oldest):
 
@@ -23,234 +31,290 @@
 # Debug Line History (newest to oldest):
 
 # Registers:
+"1	LINE	0
+	
+|3,0,1,1,1,0,1784088518,""
+"2	LINE	0
+	
+|3,0,2,1,1,0,1784088518,""
+"3	LINE	0
+	
+|3,0,3,1,1,0,1784088437,""
+"4	LINE	0
+	
+|3,0,4,1,1,0,1784088437,""
+"5	LINE	0
+	
+|3,0,5,1,1,0,1784088383,""
+"6	LINE	0
+	
+|3,0,6,1,1,0,1784088383,""
 
 # File marks:
-'0  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,48,1,0,1783997063,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'1  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,49,1,0,1783997058,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'2  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,50,1,0,1783997052,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'3  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,51,1,0,1783997052,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'4  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,52,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'5  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,53,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'6  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,54,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'7  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,55,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
-'8  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,56,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
-'9  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,57,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
+'0  1  0  /private/tmp/vim-pty.aR9Omw/[Git Status]
+|4,48,1,0,1784088624,"/private/tmp/vim-pty.aR9Omw/[Git Status]"
+'1  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,49,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+'2  1  0  /private/tmp/vimgit.26B9kj/a.txt
+|4,50,1,0,1784088452,"/private/tmp/vimgit.26B9kj/a.txt"
+'3  1  0  ~/Documents/research/vim-settings/NetrwTreeListing
+|4,51,1,0,1784088437,"~/Documents/research/vim-settings/NetrwTreeListing"
+'4  147  0  ~/Documents/research/vim-settings/README.md
+|4,52,147,0,1784088368,"~/Documents/research/vim-settings/README.md"
+'5  147  0  ~/Documents/research/vim-settings/README.md
+|4,53,147,0,1784088368,"~/Documents/research/vim-settings/README.md"
+'6  2  0  ~/Documents/research/vim-settings/README.md
+|4,54,2,0,1784088356,"~/Documents/research/vim-settings/README.md"
+'7  2  0  ~/Documents/research/vim-settings/README.md
+|4,55,2,0,1784088356,"~/Documents/research/vim-settings/README.md"
+'8  2  0  ~/Documents/research/vim-settings/README.md
+|4,56,2,0,1784088356,"~/Documents/research/vim-settings/README.md"
+'9  2  0  ~/Documents/research/vim-settings/README.md
+|4,57,2,0,1784088356,"~/Documents/research/vim-settings/README.md"
 
 # Jumplist (newest first):
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997063,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997063,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997058,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997058,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997052,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997052,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
-|4,39,1,0,1783997039,"/private/tmp/vim-settings-review.7WpWqS/repo/needle.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt
-|4,39,1,0,1783996893,"/private/tmp/vim-settings-fw-test.aSMpU3/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
--'  1  0  /private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt
-|4,39,1,0,1783996877,"/private/tmp/vim-settings-fw-test.2AAWVg/repo/sub/file.txt"
+-'  1  0  /private/tmp/vim-pty.aR9Omw/[Git Status]
+|4,39,1,0,1784088624,"/private/tmp/vim-pty.aR9Omw/[Git Status]"
+-'  1  0  /private/tmp/vim-pty.aR9Omw/a.txt
+|4,39,1,0,1784088624,"/private/tmp/vim-pty.aR9Omw/a.txt"
+-'  1  0  /private/tmp/vim-qf.KYUCvO/a.txt
+|4,39,1,0,1784088530,"/private/tmp/vim-qf.KYUCvO/a.txt"
+-'  1  0  /private/tmp/vim-qf.KYUCvO/a.txt
+|4,39,1,0,1784088530,"/private/tmp/vim-qf.KYUCvO/a.txt"
+-'  1  0  /private/tmp/vim-qf.KYUCvO/a.txt
+|4,39,1,0,1784088530,"/private/tmp/vim-qf.KYUCvO/a.txt"
+-'  1  0  /private/tmp/vim-qf.KYUCvO/a.txt
+|4,39,1,0,1784088530,"/private/tmp/vim-qf.KYUCvO/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  2  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,2,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+|4,39,1,0,1784088518,"/private/tmp/vim-verify2.CGrfSI/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/a.txt
+|4,39,1,0,1784088499,"/private/tmp/vim-verify.EvfoUX/repo/a.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
+-'  1  0  /private/tmp/vim-verify.EvfoUX/repo/b.txt
+|4,39,1,0,1784088498,"/private/tmp/vim-verify.EvfoUX/repo/b.txt"
 
 # History of marks within files (newest to oldest):
 
+> /private/tmp/vim-pty.aR9Omw/a.txt
+	*	1784088624	0
+	"	1	0
+
+> /private/tmp/vim-qf.KYUCvO/a.txt
+	*	1784088530	0
+	"	1	0
+
+> /private/tmp/vim-verify2.CGrfSI/repo/a.txt
+	*	1784088518	0
+	"	2	0
+	.	2	0
+	+	2	0
+
+> /private/tmp/vim-verify2.CGrfSI/repo/b.txt
+	*	1784088518	0
+	"	1	0
+
+> /private/tmp/vim-verify.EvfoUX/repo/a.txt
+	*	1784088499	0
+	"	1	0
+	.	2	0
+	+	2	0
+
+> /private/tmp/vim-verify.EvfoUX/repo/b.txt
+	*	1784088498	0
+	"	1	0
+
+> /private/tmp/vimgit.26B9kj/a.txt
+	*	1784088452	0
+	"	1	0
+
 > ~/Documents/research/vim-settings/README.md
-	*	1783996867	0
-	"	7	81
+	*	1784088437	0
+	"	147	0
+	^	2	1
+	.	2	0
+	+	3	0
+	+	2	0
 
 > /private/tmp/vim-settings-review.7WpWqS/repo/needle.txt
 	"	1	0

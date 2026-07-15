@@ -31,7 +31,7 @@
 formatter、linter、プロジェクト側 language server を使って Astro / TypeScript / Prettier / ESLint / Tailwind CSS / SCSS / PHP を扱う場合は、プロジェクト側に以下が入っていることを確認します。
 
 ```sh
-npm ls typescript prettier eslint tailwindcss @tailwindcss/language-server @astrojs/language-server intelephense
+npm ls typescript prettier eslint stylelint tailwindcss @tailwindcss/language-server @astrojs/language-server intelephense
 ```
 
 不足している場合の例:
@@ -40,11 +40,14 @@ npm ls typescript prettier eslint tailwindcss @tailwindcss/language-server @astr
 npm install -D typescript prettier eslint tailwindcss @tailwindcss/language-server
 npm install -D @astrojs/language-server
 npm install -D intelephense
+npm install -D stylelint
 npm install -D prettier-plugin-astro prettier-plugin-tailwindcss
 npm install -D sass
 ```
 
 保存時整形は `prettier.requireConfig: true` にしているため、Prettier 対象 filetype では対象プロジェクト側に `.prettierrc`、`prettier.config.*`、または `package.json` の `prettier` 設定が必要です。
+
+Stylelint は Vim 連携しません。CSS / SCSS / Astro / HTML の lint は、必要なときだけ対象プロジェクト側で `npm run lint:style` や `:!npx stylelint --fix %` を使います。
 
 Rust を使う場合は、`rustup` 側で `rust-analyzer` と `rust-src` を入れます。
 

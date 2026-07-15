@@ -32,9 +32,6 @@
   "[scss]": {
     "coc.preferences.formatOnSave": true
   },
-  "[less]": {
-    "coc.preferences.formatOnSave": true
-  },
   "[html]": {
     "coc.preferences.formatOnSave": true
   },
@@ -54,8 +51,7 @@
     "coc.preferences.formatOnSave": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": true
   },
   "tsserver.enable": true,
   "tsserver.useLocalTsdk": true,
@@ -88,7 +84,6 @@
   "scss.validate": true,
   "css.lint.unknownAtRules": "ignore",
   "scss.lint.unknownAtRules": "ignore",
-  "less.lint.unknownAtRules": "ignore",
   "languageserver": {
     "rust-analyzer": {
       "command": "rust-analyzer",
@@ -106,22 +101,5 @@
   "yaml.enable": true,
   "yaml.validate": true,
   "yaml.format.enable": true,
-  "tailwindCSS.includeLanguages": {
-    "astro": "html",
-    "typescriptreact": "javascript",
-    "javascriptreact": "javascript",
-    "scss": "css"
-  },
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    "class:list"
-  ],
-  "tailwindCSS.classFunctions": [
-    "cva",
-    "cx",
-    "cn"
-  ],
   "json.enable": true
 }

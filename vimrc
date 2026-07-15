@@ -478,7 +478,7 @@ function! s:GitStatus() abort
     return
   endif
 
-  let l:lines = s:SystemList(['git', '-C', l:root, 'status', '--short', '--branch'])
+  let l:entries = s:GitStatusEntries(l:root)
   if v:shell_error
     echohl WarningMsg
     echom 'git status failed.'
@@ -486,31 +486,76 @@ function! s:GitStatus() abort
     return
   endif
 
-  call s:OpenScratch('[Git Status]', l:lines, 'git')
+  call s:OpenScratch('[Git Status]', map(copy(l:entries), 'v:val.display'), 'git')
   let b:git_status_root = l:root
+  let b:git_status_entries = l:entries
   call s:SetupGitStatusKeymaps()
 endfunction
 
-" Extract the file path from the current [Git Status] line.
-" Handles the short porcelain format (XY<space>path) and renames
-" (orig -> new) and git's double-quoted paths.
-function! s:GitStatusFileOnLine() abort
-  let l:line = getline('.')
-  " Only accept real short-status rows: two status columns then a space.
-  " Rejects the '## branch' header, blank lines and 'No output.'.
-  if l:line !~# '^[ MTADRCU?!]\{2\} .'
-    return ''
+" Parse `git status --porcelain=v1 --branch -z` into display rows and target paths.
+function! s:GitStatusFields(root) abort
+  let l:tmp = tempname()
+  let l:cmd = 'git -C ' . shellescape(a:root) . ' status --porcelain=v1 --branch -z > ' . shellescape(l:tmp)
+  call system(l:cmd)
+  if v:shell_error
+    call delete(l:tmp)
+    return []
   endif
-  let l:path = strpart(l:line, 3)
-  let l:arrow = matchend(l:path, ' -> ')
-  if l:arrow >= 0
-    let l:path = strpart(l:path, l:arrow)
+  let l:bytes = blob2list(readblob(l:tmp))
+  call delete(l:tmp)
+  let l:fields = []
+  let l:current = []
+  for l:byte in l:bytes
+    if l:byte == 0
+      call add(l:fields, join(blob2str(list2blob(l:current)), "\n"))
+      let l:current = []
+    else
+      call add(l:current, l:byte)
+    endif
+  endfor
+  if !empty(l:current)
+    call add(l:fields, join(blob2str(list2blob(l:current)), "\n"))
   endif
-  if l:path =~# '^".*"$'
-    let l:path = substitute(l:path, '^"\(.*\)"$', '\1', '')
-    let l:path = substitute(l:path, '\\"', '"', 'g')
+  return l:fields
+endfunction
+
+function! s:GitStatusEntries(root) abort
+  let l:fields = s:GitStatusFields(a:root)
+  let l:entries = []
+  let l:i = 0
+  while l:i < len(l:fields)
+    let l:field = l:fields[l:i]
+    if l:field =~# '^## '
+      call add(l:entries, {'display': l:field, 'path': ''})
+    elseif l:field =~# '^[ MTADRCU?!]\{2\} '
+      let l:status = strpart(l:field, 0, 2)
+      let l:path = strpart(l:field, 3)
+      if l:status =~# '[RC]' && l:i + 1 < len(l:fields)
+        let l:old_path = l:fields[l:i + 1]
+        call add(l:entries, {
+              \ 'display': l:status . ' ' . l:old_path . ' -> ' . l:path,
+              \ 'path': l:path
+              \ })
+        let l:i += 1
+      else
+        call add(l:entries, {'display': l:field, 'path': l:path})
+      endif
+    endif
+    let l:i += 1
+  endwhile
+  if empty(l:entries)
+    return [{'display': 'No output.', 'path': ''}]
   endif
-  return l:path
+  return l:entries
+endfunction
+
+function! s:GitStatusEntryOnLine() abort
+  let l:entries = get(b:, 'git_status_entries', [])
+  let l:idx = line('.') - 1
+  if l:idx < 0 || l:idx >= len(l:entries)
+    return {}
+  endif
+  return l:entries[l:idx]
 endfunction
 
 function! s:GitStatusRefresh() abort
@@ -519,18 +564,20 @@ function! s:GitStatusRefresh() abort
     return
   endif
   let l:save = getpos('.')
-  let l:lines = s:SystemList(['git', '-C', l:root, 'status', '--short', '--branch'])
+  let l:entries = s:GitStatusEntries(l:root)
   setlocal modifiable noreadonly
   silent %delete _
-  call setline(1, empty(l:lines) ? ['No output.'] : l:lines)
+  call setline(1, map(copy(l:entries), 'v:val.display'))
   setlocal nomodifiable readonly nomodified
+  let b:git_status_entries = l:entries
   let l:save[1] = min([l:save[1], line('$')])
   call setpos('.', l:save)
 endfunction
 
 function! s:GitStatusRun(args, label) abort
   let l:root = get(b:, 'git_status_root', '')
-  let l:file = s:GitStatusFileOnLine()
+  let l:entry = s:GitStatusEntryOnLine()
+  let l:file = get(l:entry, 'path', '')
   if empty(l:root) || empty(l:file)
     return
   endif
@@ -548,7 +595,8 @@ endfunction
 " reusing the previous window.
 function! s:GitStatusOpen(split) abort
   let l:root = get(b:, 'git_status_root', '')
-  let l:file = s:GitStatusFileOnLine()
+  let l:entry = s:GitStatusEntryOnLine()
+  let l:file = get(l:entry, 'path', '')
   if empty(l:root) || empty(l:file)
     return
   endif
@@ -566,7 +614,8 @@ endfunction
 " Show the unstaged diff for the file on the current line.
 function! s:GitStatusDiff() abort
   let l:root = get(b:, 'git_status_root', '')
-  let l:file = s:GitStatusFileOnLine()
+  let l:entry = s:GitStatusEntryOnLine()
+  let l:file = get(l:entry, 'path', '')
   if empty(l:root) || empty(l:file)
     return
   endif
@@ -592,7 +641,8 @@ function! s:GitStatusUnstage() abort
 endfunction
 
 function! s:GitStatusDiscard() abort
-  let l:file = s:GitStatusFileOnLine()
+  let l:entry = s:GitStatusEntryOnLine()
+  let l:file = get(l:entry, 'path', '')
   if empty(l:file)
     return
   endif
@@ -718,7 +768,6 @@ function! s:SetupCocKeymaps() abort
   nmap <silent> <leader>cA <Plug>(coc-codeaction-source)
   nmap <silent> <leader>cr <Plug>(coc-rename)
   nnoremap <silent> <leader>cf :call <SID>CocActionAsync('format')<CR>
-  nnoremap <silent> <leader>co :call <SID>CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
   nnoremap <silent> <leader>cl :CocList extensions<CR>
   nnoremap <silent> <leader>cR :CocRestart<CR>
 

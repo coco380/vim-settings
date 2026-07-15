@@ -1,0 +1,75 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "astro": "html",
+    "typescriptreact": "javascript",
+    "javascriptreact": "javascript",
+    "scss": "css"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list"
+  ],
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx",
+    "cn"
+  ],
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "languageserver": {
+    "tailwindCSS": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "tailwindcss-language-server",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss"
+      ],
+      "rootPatterns": [
+        "package.json"
+      ]
+    },
+    "astro": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "astro-ls",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro"
+      ],
+      "rootPatterns": [
+        "package.json"
+      ]
+    },
+    "intelephense": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "intelephense",
+        "--stdio"
+      ],
+      "filetypes": [
+        "php"
+      ],
+      "rootPatterns": [
+        "package.json",
+        "composer.json",
+        ".git"
+      ]
+    }
+  }
+}

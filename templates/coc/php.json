@@ -1,0 +1,20 @@
+{
+  "languageserver": {
+    "intelephense": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "intelephense",
+        "--stdio"
+      ],
+      "filetypes": [
+        "php"
+      ],
+      "rootPatterns": [
+        "package.json",
+        "composer.json",
+        ".git"
+      ]
+    }
+  }
+}

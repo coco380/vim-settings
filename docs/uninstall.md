@@ -45,8 +45,6 @@ alias vvim='vim -Nu NONE -i NONE -n'
 ```txt
 ~/.vim/pack/vendor/start/tokyonight-vim/
 ~/.vim/pack/vendor/start/coc.nvim/
-~/.vim/pack/vendor/start/vim-gitgutter/
-~/.vim/pack/vendor/start/vim-commentary/
 ~/.vim/coc-settings.json
 ~/.config/coc/
 ~/.cache/coc/
@@ -59,7 +57,7 @@ alias vvim='vim -Nu NONE -i NONE -n'
 ```sh
 ls "$HOME/.vimrc" "$HOME/.vimrc.minimal" "$HOME/.vim/coc-settings.json"
 ls "$HOME/.local/bin/rg" "$HOME/.local/bin/fzf" "$HOME/.local/bin/glow"
-ls "$HOME/.vim/pack/vendor/start/tokyonight-vim" "$HOME/.vim/pack/vendor/start/coc.nvim" "$HOME/.vim/pack/vendor/start/vim-gitgutter" "$HOME/.vim/pack/vendor/start/vim-commentary"
+ls "$HOME/.vim/pack/vendor/start/tokyonight-vim" "$HOME/.vim/pack/vendor/start/coc.nvim"
 ```
 
 `ls` が `No such file or directory` を出す対象は、既に存在しないため削除不要です。

@@ -1,0 +1,18 @@
+{
+  "languageserver": {
+    "astro": {
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "astro-ls",
+        "--stdio"
+      ],
+      "filetypes": [
+        "astro"
+      ],
+      "rootPatterns": [
+        "package.json"
+      ]
+    }
+  }
+}

@@ -37,8 +37,6 @@ Node.js / npm も入っています。
 構成:
 
 - `neoclide/coc.nvim`
-- `airblade/vim-gitgutter`
-- `tpope/vim-commentary`
 
 特徴:
 
@@ -97,7 +95,7 @@ rm -rf "$HOME/.vim/pack/vendor/start/vim-gitgutter"
 rm -rf "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
 
-## 現時点の推奨
+## 導入検討項目
 
 TypeScript / React / Astro / Tailwind を重視し、VSCode に近い補完や LSP 体験を優先するため、以下を採用候補にします。
 
@@ -110,10 +108,13 @@ Theme:
 LSP / 補完:
 
 1. `coc.nvim`
-2. `vim-gitgutter`
-3. `vim-commentary`
 
-導入・更新・削除方針は [coc.nvim 構成メモ](coc-setup.md) にまとめます。
+追加で検討する場合:
+
+1. `vim-gitgutter`
+2. `vim-commentary`
+
+`coc.nvim` の導入・更新・削除方針は [coc.nvim 構成メモ](coc-setup.md) にまとめます。`vim-gitgutter` と `vim-commentary` は deferred 扱いで、必要になった時点で個別に導入判断します。
 
 ## 参照
 

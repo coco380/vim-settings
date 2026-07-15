@@ -2,12 +2,12 @@
 
 LSP、diagnostics、rename、code action、補完を Vim で使う場合は、`coc.nvim` 中心の構成を候補にします。まだ導入はしません。
 
+`diagnostics` は、編集中ファイルに対して Vim 上に出るエラーや警告のことです。たとえば syntax error、型エラー、lint error、未使用変数などが該当します。
+
 ## 構成
 
 ```txt
 coc.nvim
-vim-gitgutter
-vim-commentary
 ```
 
 役割:
@@ -15,8 +15,6 @@ vim-commentary
 | plugin | 役割 |
 |---|---|
 | `coc.nvim` | LSP / diagnostics / rename / code action / 補完 |
-| `vim-gitgutter` | Git hunk sign |
-| `vim-commentary` | コメント切り替え |
 
 ## 前提
 
@@ -38,8 +36,6 @@ Vim 標準 package 機能を使う場合:
 
 ```txt
 ~/.vim/pack/vendor/start/coc.nvim
-~/.vim/pack/vendor/start/vim-gitgutter
-~/.vim/pack/vendor/start/vim-commentary
 ```
 
 coc 設定:
@@ -77,8 +73,6 @@ mkdir -p "$HOME/.vim/pack/vendor/start"
 
 ```sh
 git clone --depth 1 --branch release https://github.com/neoclide/coc.nvim.git "$HOME/.vim/pack/vendor/start/coc.nvim"
-git clone --depth 1 https://github.com/airblade/vim-gitgutter.git "$HOME/.vim/pack/vendor/start/vim-gitgutter"
-git clone --depth 1 https://github.com/tpope/vim-commentary.git "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
 
 `coc.nvim` の `release` branch は、GitHub 上の Git branch です。Vim plugin として使う場合は、この branch を取得します。
@@ -138,6 +132,20 @@ Rust は `coc-rust-analyzer` ではなく、`rustup` component の `rust-analyze
 - Prettier 対象 filetype は、対象プロジェクト側に `.prettierrc`、`prettier.config.*`、または `package.json` の `prettier` 設定が必要です
 - Rust は `rust-analyzer` 経由で `rustfmt` を使います
 - PHP は保存時整形の対象外です
+- Stylelint は Vim 連携しません。必要なときだけ CLI を手動実行します
+
+保存時整形とは別に、必要なときだけ Vim のコマンドラインから対象ファイルに対して整形コマンドを実行できます。
+
+現在開いているファイルだけを整形する例:
+
+```vim
+:!npx prettier --write %
+:!npx stylelint --fix %
+```
+
+- `%` は現在開いているファイルの path
+- 任意の file を対象にする場合は、`%` の代わりに path を直接書く
+- Ex command line なので、通常の file path 補完が使える
 
 導入後、Vim 内で extension を入れます。
 
@@ -151,7 +159,14 @@ MoonBit は採用候補に含めません。
 
 Tailwind CSS、PHP、Astro を使うプロジェクトでは、対象プロジェクト内で Vim を起動して `:CocLocalConfig` を実行し、作成された `.vim/coc-settings.json` に必要な LSP だけを追加します。共通設定には置かないため、使わないプロジェクトで `npx --no-install ...` の起動失敗が出るのを避けられます。
 
-複数の project-local LSP を使う場合は、以下の例を別々のファイルとして置かず、同じ `.vim/coc-settings.json` の `languageserver` オブジェクト内に必要な entry をまとめます。
+コピー元は [templates/coc/README.md](../templates/coc/README.md) にまとめています。
+
+- [templates/coc/tailwind.json](../templates/coc/tailwind.json)
+- [templates/coc/astro.json](../templates/coc/astro.json)
+- [templates/coc/php.json](../templates/coc/php.json)
+- [templates/coc/full.json](../templates/coc/full.json)
+
+複数の project-local LSP を使う場合は、これらを別々のファイルとして置かず、同じ `.vim/coc-settings.json` に必要な key をまとめます。
 
 Tailwind CSS の例:
 
@@ -287,7 +302,6 @@ K           hover
 <Space>ca   code action
 <Space>cr   rename
 <Space>xx   diagnostics
-gcc / gc    コメント切り替え
 ```
 
 ## update
@@ -296,8 +310,6 @@ plugin 本体:
 
 ```sh
 git -C "$HOME/.vim/pack/vendor/start/coc.nvim" pull --ff-only
-git -C "$HOME/.vim/pack/vendor/start/vim-gitgutter" pull --ff-only
-git -C "$HOME/.vim/pack/vendor/start/vim-commentary" pull --ff-only
 ```
 
 coc extensions:
@@ -328,8 +340,6 @@ plugin 本体:
 
 ```sh
 rm -rf "$HOME/.vim/pack/vendor/start/coc.nvim"
-rm -rf "$HOME/.vim/pack/vendor/start/vim-gitgutter"
-rm -rf "$HOME/.vim/pack/vendor/start/vim-commentary"
 ```
 
 coc 設定・cache:
@@ -365,5 +375,3 @@ npm
 ## 参照
 
 - coc.nvim: https://github.com/neoclide/coc.nvim
-- vim-gitgutter: https://github.com/airblade/vim-gitgutter
-- vim-commentary: https://github.com/tpope/vim-commentary

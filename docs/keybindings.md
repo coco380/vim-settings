@@ -42,7 +42,7 @@ Leader キーは `<Space>` です。
 
 | キー | 何をするか |
 |---|---|
-| `<Space>gg` | `git status --short --branch` を scratch buffer に表示する |
+| `<Space>gg` | `git status` を scratch buffer に表示し、その場で stage / unstage / discard / diff を行う |
 | `<Space>gb` | 現在ファイルの `git blame` を scratch buffer に表示する |
 | `<Space>gd` | 現在ファイルの `git diff` を scratch buffer に表示する |
 
@@ -65,7 +65,11 @@ Leader キーは `<Space>` です。
 | `<C-w>j` | 下のウィンドウへ移動する |
 | `<C-w>k` | 上のウィンドウへ移動する |
 | `<C-w>l` | 右のウィンドウへ移動する |
-| `<C-w>=` | ウィンドウサイズを揃える |
+| `<C-w>=` | 可能な範囲でウィンドウサイズを揃える |
+| `<C-w>>` / `<C-w><` | 現在ウィンドウの幅を広げる / 狭める |
+| `<C-w>+` / `<C-w>-` | 現在ウィンドウの高さを広げる / 狭める |
+
+`<C-w>` 系は Vim 標準です。この repo 独自の key ではありません。
 
 ### ターミナル
 
@@ -74,6 +78,55 @@ Leader キーは `<Space>` です。
 | `<Space>ot` | ターミナルを開く |
 | `<Space>om` | `glow` で Markdown preview を開閉する |
 | terminal mode で `<Esc><Esc>` | terminal normal mode に戻る |
+
+terminal mode から戻る Vim 標準操作は `Ctrl-\ Ctrl-n` です。`<Esc><Esc>` はこの repo の追加です。
+
+## この repo 固有
+
+以下は Vim 標準そのままではなく、この repo の `vimrc` / `vimrc.minimal` で追加している key です。
+
+### 通常時
+
+| キー | 何をするか |
+|---|---|
+| `<Space>w` | 保存する |
+| `<Space>q` | 確認付きで終了する |
+| `<Space>Q` | 確認付きで全終了する |
+| `<Space>nh` | 検索ハイライトを消す |
+| `<Space>e` | `vimrc` では `netrw` を開く。`vimrc.minimal` では `:edit` 開始 |
+| `<Space>fw` | project 向け grep を開始する |
+| `<Space>fG` | Git 管理下ファイルだけを文字検索する |
+| `<Space>ff` | `:find` を開始する |
+| `<Space>sr` | 確認付き置換を始める |
+| `<Space>sw` | カーソル下単語を確認付き置換する |
+| `<Space>sG` | Git 管理下ファイルだけを確認付き置換する |
+| `<Space>gg` | Git status scratch buffer を開く |
+| `<Space>gb` | Git blame scratch buffer を開く |
+| `<Space>gd` | Git diff scratch buffer を開く |
+| `<Space>bn` / `<Space>bp` / `<Space>bd` / `<Space>bo` | バッファ移動 / 削除 |
+| `<Space>ot` | ターミナルを開く |
+| `<Space>om` | `glow` で Markdown preview を開閉する |
+
+### Git status buffer
+
+`<Space>gg` で開く scratch buffer だけで有効になる key です。
+
+| キー | 何をするか |
+|---|---|
+| `a` | stage |
+| `r` | unstage |
+| `R` | 確認付きで discard |
+| `d` | 現在行の file の diff を開く |
+| `<CR>` | 現在行の file を開く |
+| `o` | 現在行の file を split で開く |
+| `gr` | status を再読込する |
+| `q` | buffer を閉じる |
+
+### terminal mode
+
+| キー | 何をするか |
+|---|---|
+| `<Esc><Esc>` | terminal normal mode に戻る |
 
 ## 未実装
 
@@ -88,4 +141,4 @@ Leader キーは `<Space>` です。
 | `<Space>xx` / `[d` / `]d` | diagnostics | `coc.nvim` 導入後に追加 |
 | `<Space>hs` / `<Space>hp` / `<Space>hn` | Git hunk 操作 | `vim-gitgutter` 導入後に追加 |
 
-`coc.nvim`、`vim-gitgutter`、`vim-commentary` 導入後は、`vimrc` 内の guarded keymap が有効になります。plugin がない状態では読み飛ばします。
+`coc.nvim` を入れると LSP 系 keymap が有効になります。`vim-commentary` と `vim-gitgutter` は導入検討項目として `vimrc` 内に guarded keymap だけ残してあります。plugin がない状態では読み飛ばします。
