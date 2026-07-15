@@ -155,15 +155,68 @@ endfunction
 
 call s:UseTokyoNightTheme()
 
-set statusline=%#StatusLine#
-set statusline+=\ %f
-set statusline+=%m
-set statusline+=%r
-set statusline+=%=
-set statusline+=%y
-set statusline+=\ %{&fileencoding!=''?&fileencoding:&encoding}
-set statusline+=\ %l:%c
-set statusline+=\ %p%%
+let s:git_statusline_cache = {}
+
+function! s:StatuslineGitRoot(start) abort
+  if empty(a:start)
+    return ''
+  endif
+
+  let l:gitdir = finddir('.git', a:start . ';')
+  if !empty(l:gitdir)
+    return fnamemodify(l:gitdir, ':p:h:h')
+  endif
+
+  let l:gitfile = findfile('.git', a:start . ';')
+  if !empty(l:gitfile)
+    return fnamemodify(l:gitfile, ':p:h')
+  endif
+
+  return ''
+endfunction
+
+function! s:StatuslineGitBranch() abort
+  if !executable('git')
+    return ''
+  endif
+
+  let l:file = expand('%:p')
+  let l:start = empty(l:file) ? getcwd() : fnamemodify(l:file, ':p:h')
+  let l:root = s:StatuslineGitRoot(l:start)
+  if empty(l:root)
+    return ''
+  endif
+
+  let l:key = fnamemodify(l:root, ':p')
+  let l:now = localtime()
+  if has_key(s:git_statusline_cache, l:key)
+    let l:cached = s:git_statusline_cache[l:key]
+    if get(l:cached, 'expires', 0) > l:now
+      return get(l:cached, 'text', '')
+    endif
+  endif
+
+  let l:prefix = 'git -C ' . shellescape(l:root) . ' '
+  let l:branch = system(l:prefix . 'branch --show-current 2>/dev/null')
+  let l:branch = substitute(l:branch, '\n\+$', '', '')
+  if empty(l:branch)
+    let l:branch = system(l:prefix . 'rev-parse --short HEAD 2>/dev/null')
+    let l:branch = substitute(l:branch, '\n\+$', '', '')
+    if !empty(l:branch)
+      let l:branch = 'detached:' . l:branch
+    endif
+  endif
+
+  let l:text = empty(l:branch) ? '' : ' [' . l:branch . ']'
+  let s:git_statusline_cache[l:key] = {'text': l:text, 'expires': l:now + 5}
+  return l:text
+endfunction
+
+function! s:StatuslineEncoding() abort
+  return !empty(&fileencoding) ? &fileencoding : &encoding
+endfunction
+
+let &statusline = '%#StatusLine# %f%m%r%{' . expand('<SID>') . 'StatuslineGitBranch()}%=%y %{' . expand('<SID>') . 'StatuslineEncoding()} %l:%c %p%%'
 
 " ------------------------------------------------------------
 " Built-in explorer/search fallback
@@ -724,6 +777,31 @@ command! -nargs=0 GitBlame call <SID>GitBlame()
 command! -nargs=0 GitDiff call <SID>GitDiff()
 command! -nargs=0 MarkdownPreview call <SID>ToggleMarkdownPreview()
 
+function! s:CopyText(text, label) abort
+  if empty(a:text)
+    echohl WarningMsg
+    echom 'No file path for this buffer.'
+    echohl None
+    return
+  endif
+
+  let l:register = has('clipboard') ? '+' : '"'
+  call setreg(l:register, a:text)
+  echom 'Copied ' . a:label . ': ' . a:text
+endfunction
+
+function! s:CopyPath(modifier, include_line, label) abort
+  let l:path = expand(a:modifier)
+  if a:include_line && !empty(l:path)
+    let l:path .= ':' . line('.')
+  endif
+  call s:CopyText(l:path, a:label)
+endfunction
+
+command! -nargs=0 CopyRelativePath call <SID>CopyPath('%:.', 0, 'relative path')
+command! -nargs=0 CopyAbsolutePath call <SID>CopyPath('%:p', 0, 'absolute path')
+command! -nargs=0 CopyPathWithLine call <SID>CopyPath('%:p', 1, 'path with line')
+
 " ------------------------------------------------------------
 " Optional plugin integrations
 " ------------------------------------------------------------
@@ -816,6 +894,10 @@ nnoremap <silent> <leader>e :Lexplore<CR>
 nnoremap <leader>fw :call <SID>ConfigureProjectGrep()<CR>:grep 
 nnoremap <silent> <leader>fG :GitGrep<CR>
 nnoremap <leader>ff :find 
+
+nnoremap <silent> <leader>yp :CopyRelativePath<CR>
+nnoremap <silent> <leader>yP :CopyAbsolutePath<CR>
+nnoremap <silent> <leader>yl :CopyPathWithLine<CR>
 
 nnoremap <leader>sr :%s///gc<Left><Left><Left><Left>
 nnoremap <leader>sw :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>

@@ -23,6 +23,9 @@ Leader キーは `<Space>` です。
 | `<Space>ff` | `:find` を開始する |
 | `<Space>fw` | `:grep` を開始する |
 | `<Space>fG` | Git 管理下ファイルだけを文字検索する |
+| `<Space>yp` | 現在ファイルの相対パスをコピーする |
+| `<Space>yP` | 現在ファイルの絶対パスをコピーする |
+| `<Space>yl` | 現在ファイルの絶対パスと行番号をコピーする |
 
 `<Space>fw` は、実行時に検索方法を選びます。`rg` があれば `rg --vimgrep`、なければ現在ファイルまたは cwd が Git worktree 内にある場合だけ `git grep` を使います。`git grep` に切り替える場合は window-local cwd を Git root に移します。どちらも使えない場合は Vim 標準の grep 設定に従います。
 
@@ -97,6 +100,9 @@ terminal mode から戻る Vim 標準操作は `Ctrl-\ Ctrl-n` です。`<Esc><E
 | `<Space>fw` | project 向け grep を開始する |
 | `<Space>fG` | Git 管理下ファイルだけを文字検索する |
 | `<Space>ff` | `:find` を開始する |
+| `<Space>yp` | 現在ファイルの相対パスをコピーする |
+| `<Space>yP` | 現在ファイルの絶対パスをコピーする |
+| `<Space>yl` | 現在ファイルの絶対パスと行番号をコピーする |
 | `<Space>sr` | 確認付き置換を始める |
 | `<Space>sw` | カーソル下単語を確認付き置換する |
 | `<Space>sG` | Git 管理下ファイルだけを確認付き置換する |

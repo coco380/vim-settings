@@ -70,11 +70,98 @@ set undofile
 
 let mapleader = "\<Space>"
 
+let s:git_statusline_cache = {}
+
+function! s:StatuslineGitRoot(start) abort
+  if empty(a:start)
+    return ''
+  endif
+
+  let l:gitdir = finddir('.git', a:start . ';')
+  if !empty(l:gitdir)
+    return fnamemodify(l:gitdir, ':p:h:h')
+  endif
+
+  let l:gitfile = findfile('.git', a:start . ';')
+  if !empty(l:gitfile)
+    return fnamemodify(l:gitfile, ':p:h')
+  endif
+
+  return ''
+endfunction
+
+function! s:StatuslineGitBranch() abort
+  if !executable('git')
+    return ''
+  endif
+
+  let l:file = expand('%:p')
+  let l:start = empty(l:file) ? getcwd() : fnamemodify(l:file, ':p:h')
+  let l:root = s:StatuslineGitRoot(l:start)
+  if empty(l:root)
+    return ''
+  endif
+
+  let l:key = fnamemodify(l:root, ':p')
+  let l:now = localtime()
+  if has_key(s:git_statusline_cache, l:key)
+    let l:cached = s:git_statusline_cache[l:key]
+    if get(l:cached, 'expires', 0) > l:now
+      return get(l:cached, 'text', '')
+    endif
+  endif
+
+  let l:prefix = 'git -C ' . shellescape(l:root) . ' '
+  let l:branch = system(l:prefix . 'branch --show-current 2>/dev/null')
+  let l:branch = substitute(l:branch, '\n\+$', '', '')
+  if empty(l:branch)
+    let l:branch = system(l:prefix . 'rev-parse --short HEAD 2>/dev/null')
+    let l:branch = substitute(l:branch, '\n\+$', '', '')
+    if !empty(l:branch)
+      let l:branch = 'detached:' . l:branch
+    endif
+  endif
+
+  let l:text = empty(l:branch) ? '' : ' [' . l:branch . ']'
+  let s:git_statusline_cache[l:key] = {'text': l:text, 'expires': l:now + 5}
+  return l:text
+endfunction
+
+let &statusline = ' %f%m%r%{' . expand('<SID>') . 'StatuslineGitBranch()}%=%y %l:%c %p%%'
+
+function! s:CopyText(text, label) abort
+  if empty(a:text)
+    echohl WarningMsg
+    echom 'No file path for this buffer.'
+    echohl None
+    return
+  endif
+
+  let l:register = has('clipboard') ? '+' : '"'
+  call setreg(l:register, a:text)
+  echom 'Copied ' . a:label . ': ' . a:text
+endfunction
+
+function! s:CopyPath(modifier, include_line, label) abort
+  let l:path = expand(a:modifier)
+  if a:include_line && !empty(l:path)
+    let l:path .= ':' . line('.')
+  endif
+  call s:CopyText(l:path, a:label)
+endfunction
+
+command! -nargs=0 CopyRelativePath call <SID>CopyPath('%:.', 0, 'relative path')
+command! -nargs=0 CopyAbsolutePath call <SID>CopyPath('%:p', 0, 'absolute path')
+command! -nargs=0 CopyPathWithLine call <SID>CopyPath('%:p', 1, 'path with line')
+
 nnoremap <silent> <leader>w :write<CR>
 nnoremap <silent> <leader>q :quit<CR>
 nnoremap <silent> <leader>Q :qall<CR>
 nnoremap <silent> <leader>h :nohlsearch<CR>
 nnoremap <leader>e :edit<Space>
+nnoremap <silent> <leader>yp :CopyRelativePath<CR>
+nnoremap <silent> <leader>yP :CopyAbsolutePath<CR>
+nnoremap <silent> <leader>yl :CopyPathWithLine<CR>
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>

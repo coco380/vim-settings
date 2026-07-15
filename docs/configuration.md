@@ -11,7 +11,7 @@
 - 検索は Vim の `:grep` を使います
 - `rg` があれば `rg --vimgrep` を使います
 - `rg` がなく、現在ファイルまたは cwd が Git worktree 内であれば `git grep` を使います
-- statusline は plugin なしで自前設定します
+- statusline は plugin なしで自前設定し、Git worktree 内では branch 名を表示します
 - Tokyo Night colorscheme plugin があれば読み込み、なければ Tokyo Night 風の dark highlight を自前定義します
 - terminal は Vim の `:terminal` を使います
 - Markdown preview は `glow` がある場合だけ `:terminal` で表示します
@@ -31,6 +31,7 @@
 - clipboard
 - undo / swap / viminfo の state 保存先
 - `<Space>w` / `<Space>q` / `<Space>e` など最小限の keymap
+- Git worktree 内では statusline に branch 名を表示
 
 `vimrc.minimal` の `<Space>e` は `:edit` を開始するだけです。`--noplugin` で起動するため、netrw の file explorer は前提にしません。
 
