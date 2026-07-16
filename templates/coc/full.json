@@ -51,6 +51,11 @@
       "filetypes": [
         "astro"
       ],
+      "initializationOptions": {
+        "typescript": {
+          "tsdk": "/absolute/path/to/project/node_modules/typescript/lib"
+        }
+      },
       "rootPatterns": [
         "package.json"
       ]

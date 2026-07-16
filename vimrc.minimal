@@ -59,7 +59,7 @@ for s:dir in [s:undodir, s:backupdir, s:swapdir]
   endif
 endfor
 
-if exists('&viminfofile')
+if exists('&viminfofile') && &viminfofile !=# 'NONE'
   let &viminfofile = s:state_dir . '/viminfo'
 endif
 
@@ -79,7 +79,7 @@ function! s:StatuslineGitRoot(start) abort
 
   let l:gitdir = finddir('.git', a:start . ';')
   if !empty(l:gitdir)
-    return fnamemodify(l:gitdir, ':p:h:h')
+    return fnamemodify(substitute(fnamemodify(l:gitdir, ':p'), '[\/]\+$', '', ''), ':h')
   endif
 
   let l:gitfile = findfile('.git', a:start . ';')
